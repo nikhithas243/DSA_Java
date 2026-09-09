@@ -41,8 +41,31 @@ public class arrayqs {
                 end=mid-1;
             }
         }
-        return -1;
-        
+        return -1; 
+    }
+    public static void reverseI(int arr[]){
+        int rev[]=new int[5];
+        int j=0;
+        for(int i=arr.length-1;i>=0;i--){
+            rev[j]=arr[i];
+            j++;
+        }
+        for(int i=0;i<arr.length;i++){
+            arr[i]=rev[i];
+        }
+
+    }
+    public static void reverseII(int arr[]){
+        int first=0,last=arr.length-1;
+        while(first<last){
+            int temp=arr[last];
+            arr[last]=arr[first];
+            arr[first]=temp;
+            first++;
+            last--;
+        }
+
+
     }
     
 
@@ -53,7 +76,7 @@ public class arrayqs {
         for(int i=0;i<num.length;i++){
             num[i]=sc.nextInt();
         }
-
+        
         // //LINEAR SEARCH
         // System.out.println("Linear search: Enter key to find");
         // int key=sc.nextInt();
@@ -84,13 +107,29 @@ public class arrayqs {
         System.out.println("The smallest in array "+smallest(num));
 
         //BINARY SEARCH
-        System.out.println("Enter key to search");
-        int key=sc.nextInt();
-        if(binarySearch(num,key)==-1){
-        System.out.println("Element not found");
-        }else{
-        System.out.println("The index where the element is found is "+binarySearch(num,key));
-       }
+        // System.out.println("Enter key to search");
+        // int key=sc.nextInt();
+        // if(binarySearch(num,key)==-1){
+        // System.out.println("Element not found");
+        // }else{
+        // System.out.println("The index where the element is found is "+binarySearch(num,key));
+        // }
+
+        //REVERSE AN ARRAY
+        // System.out.println("Reverse an array Approach I");
+        // reverseI(num);
+        // System.out.println("Array is ");
+        // for(int i=0;i<num.length;i++){
+        //     System.out.println(num[i]+" ");
+        // }
+        
+        //REVERSE AN ARRAY-APPROACH II
+        System.out.println("Reverse an array Approach II");
+        reverseII(num);
+        System.out.println("Array is ");
+        for(int i=0;i<num.length;i++){
+            System.out.println(num[i]+" ");
+        }
 
     }
 }
