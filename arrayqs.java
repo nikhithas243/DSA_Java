@@ -67,6 +67,17 @@ public class arrayqs {
 
 
     }
+    public static void pairsinArr(int arr[]){
+        int count=0;
+        for(int i=0;i<arr.length;i++){
+            for(int j=i+1;j<arr.length;j++){
+                System.out.print("("+arr[i]+","+arr[j]+")  ");
+                count++;
+            }
+            System.out.println();
+        }
+        System.out.print("Count of pairs is "+count);
+    }
     
 
     public static void main(String args[]){
@@ -130,6 +141,8 @@ public class arrayqs {
         for(int i=0;i<num.length;i++){
             System.out.println(num[i]+" ");
         }
-
+        //PAIRS IN AN ARRAY
+        pairsinArr(num);
+        
     }
 }
