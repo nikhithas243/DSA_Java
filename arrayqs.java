@@ -143,6 +143,9 @@ public class arrayqs {
         }
         //PAIRS IN AN ARRAY
         pairsinArr(num);
+
+        //subarrays
+        
         
     }
 }
