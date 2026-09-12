@@ -145,7 +145,7 @@ public class arrayqs {
         pairsinArr(num);
 
         //subarrays
-        
+        //max subarrays
         
     }
 }
