@@ -76,7 +76,26 @@ public class arrayqs {
             }
             System.out.println();
         }
-        System.out.print("Count of pairs is "+count);
+        System.out.print("Count of pairs is "+count+"\n");
+    }
+
+    public static void printsubarrays(int arr[]){
+       int count=0;
+       System.out.println("The subarrays for array is (Brute force approach) \n");
+        for(int i=0;i<arr.length;i++){
+           
+            System.out.print(arr[i]+"  ");count++;
+            
+            for(int j=i+1;j<arr.length;j++){
+               
+                for(int k=i;k<=j;k++){
+                    System.out.print(arr[k]+" ");
+                    
+                }System.out.print("  ");count++;
+                
+            } System.out.println();
+        }
+        System.out.println("Count of subarrays is "+count);
     }
     
 
@@ -135,17 +154,21 @@ public class arrayqs {
         // }
         
         //REVERSE AN ARRAY-APPROACH II
-        System.out.println("Reverse an array Approach II");
-        reverseII(num);
-        System.out.println("Array is ");
-        for(int i=0;i<num.length;i++){
-            System.out.println(num[i]+" ");
-        }
+        // System.out.println("Reverse an array Approach II");
+        // reverseII(num);
+        // System.out.println("Array is ");
+        // for(int i=0;i<num.length;i++){
+        //     System.out.println(num[i]+" ");
+        // }
         //PAIRS IN AN ARRAY
         pairsinArr(num);
 
-        //subarrays
-        //max subarrays
+        //Print subarrays
+        //Print number of subarrays
+        printsubarrays(num);
+        
+        
+        //Find max of subarrays
         
     }
 }
