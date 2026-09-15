@@ -79,7 +79,7 @@ public class arrayqs {
         System.out.print("Count of pairs is "+count+"\n");
     }
 
-    public static void printsubarrays(int arr[]){
+    public static void subarrays(int arr[]){
        int count=0;
        System.out.println("The subarrays for array is (Brute force approach) \n");
         for(int i=0;i<arr.length;i++){
@@ -96,6 +96,37 @@ public class arrayqs {
             } System.out.println();
         }
         System.out.println("Count of subarrays is "+count);
+    }
+    public static void maxSubarraysI(int arr[]){
+        int currsum=0;
+        int maxSum=Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            for(int j=i;j<arr.length;j++){
+                currsum=0;
+                for(int k=i;k<=j;k++){
+                    currsum+=arr[k];
+                }
+                System.out.print(currsum+" ");
+                if(currsum>maxSum) maxSum=currsum;
+            }
+        }
+        System.out.println("Max sum is "+maxSum);
+    }
+    public static void maxSubarrays_prefix(int arr[]){
+        int prefix[]=new int[arr.length];
+        prefix[0]=arr[0];
+        int maxsum=Integer.MIN_VALUE;
+        for(int i=1;i<arr.length;i++){
+            prefix[i]=prefix[i-1]+arr[i];
+        }
+        for(int i=0;i<arr.length;i++){
+            int currsum=0;
+            for(int j=i;j<arr.length;j++){
+                currsum=i==0?prefix[j]:prefix[j]-prefix[i-1];
+                if(maxsum<currsum) maxsum=currsum;
+            }
+        }
+        System.out.println("The max of subarrays is "+maxsum);
     }
     
 
@@ -131,10 +162,10 @@ public class arrayqs {
         // }
        
         //LARGEST IN ARRAY
-        System.out.println("The largest in array "+largest(num));
+        //System.out.println("The largest in array "+largest(num));
 
         //SMALLEST IN ARRAY
-        System.out.println("The smallest in array "+smallest(num));
+        //System.out.println("The smallest in array "+smallest(num));
 
         //BINARY SEARCH
         // System.out.println("Enter key to search");
@@ -161,14 +192,17 @@ public class arrayqs {
         //     System.out.println(num[i]+" ");
         // }
         //PAIRS IN AN ARRAY
-        pairsinArr(num);
+       // pairsinArr(num);
 
         //Print subarrays
-        //Print number of subarrays
-        printsubarrays(num);
-        
+       // subarrays(num);
         
         //Find max of subarrays
-        
+        //maxSubarraysI(num);
+
+        //Optimal approach- max of subarrays-prefix sum
+        maxSubarrays_prefix(num);
+
+        //Kadane algo
     }
 }
