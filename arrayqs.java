@@ -203,6 +203,6 @@ public class arrayqs {
         //Optimal approach- max of subarrays-prefix sum
         maxSubarrays_prefix(num);
 
-        //Kadane algo
+        //Kadane algorithm
     }
 }
