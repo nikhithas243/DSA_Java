@@ -6,7 +6,7 @@ public class arrayqs {
         }
         return -1;
     }
-    public static int menu(String num[],String key){
+    public static int menu(String num[],String key){ 
         for(int i=0;i<num.length;i++){
             if(num[i].equals(key)) return i; //== doesn't work for strings it is .equals() operator
         }
@@ -204,5 +204,6 @@ public class arrayqs {
         maxSubarrays_prefix(num);
 
         //Kadane algorithm
+        //to be done
     }
 }
