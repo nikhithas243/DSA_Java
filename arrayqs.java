@@ -204,6 +204,6 @@ public class arrayqs {
         maxSubarrays_prefix(num);
 
         //Kadane algorithm
-        //to be done
+        //TBD
     }
 }
