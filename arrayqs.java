@@ -6,7 +6,7 @@ public class arrayqs {
         }
         return -1;
     }
-    public static int menu(String num[],String key){ 
+    public static int menu(String num[],String key){
         for(int i=0;i<num.length;i++){
             if(num[i].equals(key)) return i; //== doesn't work for strings it is .equals() operator
         }
@@ -128,6 +128,61 @@ public class arrayqs {
         }
         System.out.println("The max of subarrays is "+maxsum);
     }
+    public static void kadane_algo(int num[]) {
+        int currsum=0,maxsum=Integer.MIN_VALUE;
+        for(int i=0;i<num.length;i++){
+            currsum+=num[i];
+            if(currsum<0) currsum=0;
+            if(maxsum<currsum) maxsum=currsum;
+        }
+        System.out.println("Maximum Sum "+maxsum);
+        
+    }
+    public static int trapping_rainwater(int arr[]){
+        int n=arr.length;
+        //left maximum array
+        int leftmax[]=new int[n];
+        leftmax[0]=arr[0];
+        for(int i=1;i<n;i++){
+            leftmax[i]=Math.max(leftmax[i-1], arr[i]);
+        }
+        //rightmax array
+        int rightmax[]=new int[n];
+        rightmax[n-1]=arr[n-1];
+        for(int i=n-2;i>=0;i--){
+            rightmax[i]=Math.max(rightmax[i+1],arr[i]);
+        }
+        //waterlevel-height
+        int trapped_water=0;
+        for(int i=0;i<n;i++){
+            trapped_water+=(Math.min(leftmax[i],rightmax[i])-arr[i]);
+        }
+        return trapped_water;
+    }
+    public static int buy_sell_stock(int prices[]){
+        int maxprofit = 0;
+        int minbuyprice=prices[0];
+        for(int i=1;i<prices.length;i++){
+            minbuyprice=Math.min(minbuyprice,prices[i]);
+            maxprofit=Math.max(prices[i]-minbuyprice,maxprofit);
+        }
+        return maxprofit>=0?maxprofit:0;
+    }
+    public static int buy_sell_stock_ACversion(int prices[]){
+        int minbuyprice=Integer.MAX_VALUE;
+        int maxprofit=Integer.MIN_VALUE;
+        for(int i=0;i<prices.length;i++){
+            if(prices[i]>minbuyprice){
+                maxprofit=Math.max(maxprofit,prices[i]-minbuyprice);
+            }
+            else{
+                minbuyprice=prices[i];
+            }
+        }
+        return maxprofit>=0?maxprofit:0;
+    }
+    
+
     
 
     public static void main(String args[]){
@@ -201,11 +256,16 @@ public class arrayqs {
         //maxSubarraysI(num);
 
         //Optimal approach- max of subarrays-prefix sum
-        maxSubarrays_prefix(num);
+        //maxSubarrays_prefix(num);
 
-        //Kadane algorithm
-        //TBD------
+        //Kadane algo
+        //kadane_algo(num);
+
         //Trapping Rainwater
-        //TBD
+        //System.out.println("The trapped Rainwater is "+trapping_rainwater(num));
+        
+        //Find the maximum Profit to buy and sell stock
+        System.out.println("The maximum profit is "+buy_sell_stock(num));
+        System.out.println("The maximum profit is "+buy_sell_stock_ACversion(num));
     }
 }
