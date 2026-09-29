@@ -5,3 +5,6 @@
 //5 questions
 
 //find duplicates
+
+public static void main(String args[]){
+}
